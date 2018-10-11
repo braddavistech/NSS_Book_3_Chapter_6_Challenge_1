@@ -75,6 +75,7 @@ const students = [
 
 const h1 = (students,...extra) => {
   console.log(extra);
+  console.log("Extra Array Element 1: " + extra[0] + "          Extra Array Element 2: " + extra[1]+ "          Extra Array Element 3: " + extra[2] );
   if (students.score >= 60){
     return `<div class ="student"><h1 class="xx-large passing">${students.name}</h1>`
   } else {
@@ -83,12 +84,10 @@ const h1 = (students,...extra) => {
 };
 
 const section = (students, ...extra) => {
-  console.log(extra);
   return `<section class="bordered dashed section--padder">${students.class}</section>`
 };
 
 const aside = (students, ...extra) => {
-  console.log(extra);
   return `<aside class="pushRight">${students.info}</aside></div>`
 };
 
@@ -101,11 +100,7 @@ let b = 1;
 let c = 2;
 
 for (let i = 0; i < students.length; i++){
-  console.log(students[i]);
-  console.log(h1(students[i]));
   individualStudent.push(h1(students[i], a, b, c) + section(students[i], a, b, c) + aside(students[i], a, b, c));
-
-
 };
 
 studentCont.innerHTML = individualStudent.join("");
