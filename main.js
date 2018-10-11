@@ -73,37 +73,38 @@ const students = [
   }
 ]
 
-const h1 = (title, style) => {
-  return `<h1 class="${style}">${title}</h1>`
+const h1 = (students,...extra) => {
+  console.log(extra);
+  if (students.score >= 60){
+    return `<div class ="student"><h1 class="xx-large passing">${students.name}</h1>`
+  } else {
+    return`<div class ="student"><h1 class="xx-large failing">${students.name}</h1>`
+  }
 };
 
-const section = (title, style) => {
-  return `<section class="bordered dashed ${style}">${title}</section>`
+const section = (students, ...extra) => {
+  console.log(extra);
+  return `<section class="bordered dashed section--padder">${students.class}</section>`
 };
 
-const aside = (title, style) => {
-  return `<aside class="${style}">${title}</aside>`
+const aside = (students, ...extra) => {
+  console.log(extra);
+  return `<aside class="pushRight">${students.info}</aside></div>`
 };
 
-
-function studentPass (title, style, info) {
-  return  '<div class="student">' + h1(title, "xx-large passing") + section(style, "section--padder") + aside(info, "pushRight") + '</div>';
-};
-
-function studentFail (title, style, info) {
-  return  '<div class="student">' + h1(title, "xx-large failing") + section(style, "section--padder") + aside(info, "pushRight") + '</div>';
-};
 
 
 const studentCont = document.querySelector("#container");
 individualStudent = [];
+let a = 0;
+let b = 1;
+let c = 2;
 
 for (let i = 0; i < students.length; i++){
-  if (students[i].score >= 60){
-    individualStudent.push(studentPass(students[i].name, students[i].class, students[i].info));
-  } else {
-    individualStudent.push(studentFail(students[i].name, students[i].class, students[i].info));
-  }
+  console.log(students[i]);
+  console.log(h1(students[i]));
+  individualStudent.push(h1(students[i], a, b, c) + section(students[i], a, b, c) + aside(students[i], a, b, c));
+
 
 };
 
